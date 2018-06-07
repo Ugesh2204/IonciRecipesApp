@@ -1,25 +1,27 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { EditRecipePage } from "../edit-recipe/edit-recipe";
 
-/**
- * Generated class for the RecipesPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
-@IonicPage()
+
 @Component({
   selector: 'page-recipes',
   templateUrl: 'recipes.html',
 })
 export class RecipesPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  /**Add this NavController  */
+  constructor(private navCtrl: NavController) {
+
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad RecipesPage');
+  /**We want to navigate to the edit recipe page */
+  /**Passing a javacsript property {mode: 'New'} 
+   * because i am going to use the same page the edit-recipe page
+   * for both editing and creating recipes
+   * 
+  */
+  onNewRecipe() {
+    this.navCtrl.push(EditRecipePage, {mode: 'New'});
   }
-
 }
