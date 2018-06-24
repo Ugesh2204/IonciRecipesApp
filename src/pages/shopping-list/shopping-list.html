@@ -2,6 +2,13 @@
 <ion-header>
 
   <ion-navbar>
+
+      <ion-buttons start>
+          <button ion-button icon-only menuToggle>
+            <ion-icon name="menu"></ion-icon>
+          </button>
+        </ion-buttons>
+        
     <ion-title>Shopping List </ion-title>
   </ion-navbar>
 
@@ -39,7 +46,7 @@
 
 <!--Display item form the list-->
 <ion-list>
-  <ion-item *ngFor ="let item of listItems let i = index" (click)="onRemoveItem(i)">
+  <ion-item *ngFor ="let item of listItems; let i = index" (click)="onRemoveItem(i)">
     <h3>{{ item.name }} ({{ item.amount }})</h3>
   </ion-item>
 </ion-list>

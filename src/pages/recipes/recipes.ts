@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController } from 'ionic-angular';
 import { EditRecipePage } from "../edit-recipe/edit-recipe";
+import { Recipe } from "../../models/recipe";
+import { RecipesService } from '../../services/recipe-service';
+import { RecipePage } from '../recipe/recipe';
 
 
 
@@ -9,10 +12,13 @@ import { EditRecipePage } from "../edit-recipe/edit-recipe";
   templateUrl: 'recipes.html',
 })
 export class RecipesPage {
+  recipes: Recipe[];
 
   /**Add this NavController  */
-  constructor(private navCtrl: NavController) {
+  constructor(private navCtrl: NavController, private recipesService: RecipesService) {}
 
+  ionViewWillEnter() {
+    this.recipes = this.recipesService.getRecipes();
   }
 
   /**We want to navigate to the edit recipe page */
@@ -24,4 +30,15 @@ export class RecipesPage {
   onNewRecipe() {
     this.navCtrl.push(EditRecipePage, {mode: 'New'});
   }
+
+
+  /**I want load the recipe page */
+  /**Passing the data to the recipe page */
+  onLoadRecipe(recipe: Recipe, index: number) {
+    this.navCtrl.push(RecipePage, {recipe: recipe, index: index});
+  }
+
+
+
+
 }
