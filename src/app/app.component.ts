@@ -16,7 +16,8 @@ export class MyApp {
   signupPage = SignupPage;
   @ViewChild('nav') nav: NavController;
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private menuCtrl: MenuController) {
+  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, 
+    private menuCtrl: MenuController) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
@@ -32,7 +33,7 @@ export class MyApp {
   }
 
   onLogout(){
-    
+
   }
 
 
